@@ -38,6 +38,21 @@ module.exports = env => {
               }
             ]
           })
+        },
+        {
+          test: [/\.eot$/, /\.ttf$/, /\.svg$/, /\.woff$/, /\.woff2$/],
+          loader: require.resolve("file-loader"),
+          options: {
+            name: "public/fonts/[name].[hash:8].[ext]"
+          }
+        },
+        {
+          test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+          loader: require.resolve("url-loader"),
+          options: {
+            limit: 10000,
+            name: "public/images/[name].[hash:8].[ext]"
+          }
         }
       ]
     },
