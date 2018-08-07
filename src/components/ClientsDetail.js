@@ -5,7 +5,6 @@ const ClientsDetail = props => (
   <Item.Group>
     <Item>
       <Item.Image src={props.general && props.general.avatar} />
-
       <Item.Content>
         <Item.Header>
           {props.general &&

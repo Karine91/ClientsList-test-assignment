@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { List } from "semantic-ui-react";
 import ClientsListItem from "./ClientsListItem";
 import { startSetClients } from "../actions/clients";
+import selectClients from "../selectors/clients";
 
 class ClientsList extends Component {
   componentDidMount() {
@@ -21,7 +22,7 @@ class ClientsList extends Component {
 
 const mapStateToProps = state => {
   return {
-    clients: state.clients
+    clients: selectClients(state.clients, state.filters)
   };
 };
 
