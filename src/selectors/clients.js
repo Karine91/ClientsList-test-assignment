@@ -1,3 +1,8 @@
+import { createSelector } from "reselect";
+
+const getClients = state => state.clients;
+const getFilters = state => state.filters;
+
 // Get visible expenses
 const getValueFromObject = (outputArr, obj) => {
   for (let key in obj) {
@@ -17,18 +22,23 @@ const objectToArray = obj => {
   return textValuesArr;
 };
 
-export default (clients, { text }) => {
-  if (text) {
-    return clients.filter(client => {
-      const textValuesArr = objectToArray(client);
-      let textMatch;
-      for (let i = 0; i < textValuesArr.length; i++) {
-        let re = new RegExp(text, "i");
-        textMatch = textValuesArr[i].match(re);
-        if (textMatch) break;
-      }
-      return textMatch;
-    });
+const getVisibleClients = createSelector(
+  [getClients, getFilters],
+  (clients, filters) => {
+    if (filters.text) {
+      return clients.filter(client => {
+        const textValuesArr = objectToArray(client);
+        let textMatch;
+        for (let i = 0; i < textValuesArr.length; i++) {
+          let re = new RegExp(filters.text, "i");
+          textMatch = textValuesArr[i].match(re);
+          if (textMatch) break;
+        }
+        return textMatch;
+      });
+    }
+    return clients;
   }
-  return clients;
-};
+);
+
+export default getVisibleClients;

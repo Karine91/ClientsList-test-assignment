@@ -22,7 +22,7 @@ class ClientsList extends Component {
 
 const mapStateToProps = state => {
   return {
-    clients: selectClients(state.clients, state.filters)
+    clients: selectClients(state)
   };
 };
 

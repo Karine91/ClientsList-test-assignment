@@ -4,17 +4,9 @@ import { Input } from "semantic-ui-react";
 import { setTextFilter } from "../actions/filters";
 
 class SearchInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      search: ""
-    };
-  }
-
   onChangeSearchInput = e => {
     const value = e.target.value;
-    this.setState(() => ({ search: value }));
-    this.props.dispatch(setTextFilter(value));
+    this.props.onChangeSearchInput(value);
   };
 
   render() {
@@ -23,7 +15,7 @@ class SearchInput extends React.Component {
         <Input
           icon="search"
           placeholder="Search..."
-          value={this.state.search}
+          value={this.props.filters.text}
           onChange={this.onChangeSearchInput}
         />
       </div>
@@ -31,4 +23,12 @@ class SearchInput extends React.Component {
   }
 }
 
-export default connect()(SearchInput);
+const mapStateToProps = state => ({ filters: state.filters });
+const mapDispatchToProps = dispatch => ({
+  onChangeSearchInput: text => dispatch(setTextFilter(text))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchInput);
