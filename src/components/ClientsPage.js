@@ -21,6 +21,6 @@ export const ClientsListPage = props => (
   </Container>
 );
 
-const mapStateToProps = ({ detail }) => ({ detail });
+const mapStateToProps = state => ({ detail: state.detail });
 
 export default connect(mapStateToProps)(ClientsListPage);

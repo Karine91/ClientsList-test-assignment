@@ -1,10 +1,13 @@
 {
-    "setupFiles": [
-        "raf/polyfill",
-        "<rootDir>/src/tests/setupTests.js"
-    ],
-    "snapshotSerializers": [
-        "enzyme-to-json/serializer"
-    ],
-    "testURL": "http://localhost/"
+  "setupFiles": ["raf/polyfill", "<rootDir>/src/tests/setupTests.js"],
+  "snapshotSerializers": ["enzyme-to-json/serializer"],
+  "testURL": "http://localhost:8080/",
+  "collectCoverage": true,
+  "coverageDirectory": "src/tests/coverage",
+  "coveragePathIgnorePatterns": [
+    "/node_modules/",
+    "src/tests/setupTests.js",
+    "/src/tests/fixtures/",
+    "/src/tests/coverage/"
+  ]
 }

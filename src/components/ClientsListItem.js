@@ -3,7 +3,7 @@ import { List, Image } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { setDetail } from "../actions/detail";
 
-class ClientsListItem extends Component {
+export class ClientsListItem extends Component {
   onClickItem = () => {
     const { address, contact, general, job } = this.props;
     this.props.dispatch(setDetail({ address, contact, general, job }));
