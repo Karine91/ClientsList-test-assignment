@@ -13,10 +13,12 @@ export const ClientsListPage = props => (
         <ClientsList />
       </Grid.Column>
       <Grid.Column width={10}>
-        <ClientsDetail />
+        <ClientsDetail {...props.detail} />
       </Grid.Column>
     </Grid>
   </Container>
 );
 
-export default connect(undefined)(ClientsListPage);
+const mapStateToProps = ({ detail }) => ({ detail });
+
+export default connect(mapStateToProps)(ClientsListPage);

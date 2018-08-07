@@ -1,4 +1,6 @@
 import $ from "jquery";
+import { setDetail } from "./detail";
+
 export const setClients = clients => ({
   type: "SET_CLIENTS",
   clients
@@ -15,8 +17,8 @@ export const startSetClients = () => {
         console.log("error", err);
       },
       success: data => {
-        console.log(data);
         dispatch(setClients(data));
+        dispatch(setDetail(data[0]));
       }
     });
   };

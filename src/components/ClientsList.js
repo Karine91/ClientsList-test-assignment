@@ -10,7 +10,7 @@ class ClientsList extends Component {
   }
   render() {
     return (
-      <List>
+      <List selection className="clients-list">
         {this.props.clients.map((client, index) => (
           <ClientsListItem {...client} key={index} />
         ))}

@@ -1,18 +1,27 @@
-import React from "react";
+import React, { Component } from "react";
 import { List, Image } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { setDetail } from "../actions/detail";
 
-const ClientsListItem = props => {
-  return (
-    <List.Item>
-      <Image avatar src={props.general.avatar} />
-      <List.Content>
-        <List.Header as="a">
-          {props.general.firstName} {props.general.lastName}
-        </List.Header>
-        <List.Description>{props.job.title}</List.Description>
-      </List.Content>
-    </List.Item>
-  );
-};
+class ClientsListItem extends Component {
+  onClickItem = () => {
+    const { address, contact, general, job } = this.props;
+    this.props.dispatch(setDetail({ address, contact, general, job }));
+  };
 
-export default ClientsListItem;
+  render() {
+    return (
+      <List.Item className="clients-list__item" onClick={this.onClickItem}>
+        <Image src={this.props.general.avatar} wrapped size="tiny" />
+        <List.Content>
+          <List.Header>
+            {this.props.general.firstName} {this.props.general.lastName}
+          </List.Header>
+          <List.Description>{this.props.job.title}</List.Description>
+        </List.Content>
+      </List.Item>
+    );
+  }
+}
+
+export default connect()(ClientsListItem);
