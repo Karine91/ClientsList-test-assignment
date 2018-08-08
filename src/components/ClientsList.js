@@ -5,7 +5,7 @@ import ClientsListItem from "./ClientsListItem";
 import { startSetClients } from "../actions/clients";
 import selectClients from "../selectors/clients";
 
-class ClientsList extends Component {
+export class ClientsList extends Component {
   componentDidMount() {
     this.props.dispatch(startSetClients());
   }

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for components/ClientsListItem.js</title>
+    <title>Code coverage report for components/ClientsList.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="..\prettify.css" />
     <link rel="stylesheet" href="..\base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="..\index.html">All files</a> / <a href="index.html">components</a> ClientsListItem.js
+      <a href="..\index.html">All files</a> / <a href="index.html">components</a> ClientsList.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>4/5</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>3/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>4/5</span>
       </div>
     </div>
     <p class="quiet">
@@ -73,60 +73,66 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from "react";
-import { List, Image } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { setDetail } from "../actions/detail";
+import { List } from "semantic-ui-react";
+import ClientsListItem from "./ClientsListItem";
+import { startSetClients } from "../actions/clients";
+import selectClients from "../selectors/clients";
 &nbsp;
-export class ClientsListItem extends Component {
-  onClickItem = () =&gt; {
-    const { address, contact, general, job } = this.props;
-    this.props.dispatch(setDetail({ address, contact, general, job }));
-  };
-&nbsp;
+export class ClientsList extends Component {
+  componentDidMount() {
+    this.props.dispatch(startSetClients());
+  }
   render() {
     return (
-      &lt;List.Item className="clients-list__item" onClick={this.onClickItem}&gt;
-        &lt;Image src={this.props.general.avatar} wrapped size="tiny" /&gt;
-        &lt;List.Content&gt;
-          &lt;List.Header&gt;
-            {this.props.general.firstName} {this.props.general.lastName}
-          &lt;/List.Header&gt;
-          &lt;List.Description&gt;{this.props.job.title}&lt;/List.Description&gt;
-        &lt;/List.Content&gt;
-      &lt;/List.Item&gt;
+      &lt;List selection className="clients-list"&gt;
+        {this.props.clients.map(<span class="fstat-no" title="function not covered" >(c</span>lient, index) =&gt; (
+<span class="cstat-no" title="statement not covered" >          &lt;ClientsListItem {...client} key={index} /&gt;</span>
+        ))}
+      &lt;/List&gt;
     );
   }
 }
 &nbsp;
-export default connect()(ClientsListItem);
+const mapStateToProps = state =&gt; {
+  return {
+    clients: selectClients(state)
+  };
+};
+&nbsp;
+export default connect(mapStateToProps)(ClientsList);
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

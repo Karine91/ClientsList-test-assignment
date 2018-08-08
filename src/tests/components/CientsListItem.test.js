@@ -8,6 +8,13 @@ import clients from "../fixtures/clients";
 
 const createMockStore = configureMockStore([thunk]);
 
+test("should render ClientsListItem", () => {
+  const wrapper = shallow(
+    <ClientsListItem {...clients[0]} dispatch={jest.fn()} />
+  );
+  expect(wrapper).toMatchSnapshot();
+});
+
 test("should set detail object on click item", () => {
   const store = createMockStore();
   const wrapper = shallow(

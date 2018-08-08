@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ClientsListItem 1`] = `
+<ListItem
+  className="clients-list__item"
+  onClick={[Function]}
+>
+  <Image
+    as="img"
+    size="tiny"
+    src="https://s3.amazonaws.com/uifaces/faces/twitter/kevinoh/128.jpg"
+    ui={true}
+    wrapped={true}
+  />
+  <ListContent>
+    <ListHeader>
+      Liana
+       
+      Crooks
+    </ListHeader>
+    <ListDescription>
+      Investor Functionality Coordinator
+    </ListDescription>
+  </ListContent>
+</ListItem>
+`;
