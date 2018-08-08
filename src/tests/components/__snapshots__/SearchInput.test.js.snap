@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render SearchInput 1`] = `
+<div
+  className="search-wrapper"
+>
+  <Input
+    icon="search"
+    onChange={[Function]}
+    placeholder="Search..."
+    type="text"
+    value=""
+  />
+</div>
+`;

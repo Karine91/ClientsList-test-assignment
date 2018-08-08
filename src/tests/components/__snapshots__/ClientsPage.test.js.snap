@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ClientsListPage 1`] = `
+<Container
+  className="main-wrapper"
+>
+  <Segment>
+    <Grid
+      celled="internally"
+      columns={2}
+    >
+      <GridColumn
+        width={6}
+      >
+        <Connect(SearchInput) />
+        <Connect(ClientsList) />
+      </GridColumn>
+      <GridColumn
+        width={10}
+      >
+        <ClientsDetail
+          address={
+            Object {
+              "city": "New Devon",
+              "country": "Guinea-Bissau",
+              "street": "1520 Zemlak Cove",
+              "zipCode": "42586-7898",
+            }
+          }
+          contact={
+            Object {
+              "email": "Gerry_Hackett77@gmail.com",
+              "phone": "(895) 984-0132",
+            }
+          }
+          general={
+            Object {
+              "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/kevinoh/128.jpg",
+              "firstName": "Liana",
+              "lastName": "Crooks",
+            }
+          }
+          job={
+            Object {
+              "company": "Ledner, Johnson and Predovic",
+              "title": "Investor Functionality Coordinator",
+            }
+          }
+        />
+      </GridColumn>
+    </Grid>
+  </Segment>
+</Container>
+`;

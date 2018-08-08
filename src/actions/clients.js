@@ -10,9 +10,9 @@ export const startSetClients = () => {
   return dispatch => {
     return $
       .ajax({
-        type: "GET",
+        url: "/clients.json",
         dataType: "json",
-        url: "/clients.json"
+        method: "GET"
       })
       .done(data => {
         dispatch(setClients(data));

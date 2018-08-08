@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ClientsDetail 1`] = `
+<ItemGroup>
+  <Item>
+    <ItemImage
+      src="https://s3.amazonaws.com/uifaces/faces/twitter/kevinoh/128.jpg"
+    />
+    <ItemContent>
+      <ItemHeader>
+        Liana Crooks
+      </ItemHeader>
+      <ItemMeta>
+        Investor Functionality Coordinator - Ledner, Johnson and Predovic
+      </ItemMeta>
+      <ItemDescription>
+        42586-7898, Guinea-Bissau New Devon 1520 Zemlak Cove
+      </ItemDescription>
+      <ItemExtra>
+        Gerry_Hackett77@gmail.com, (895) 984-0132
+      </ItemExtra>
+    </ItemContent>
+  </Item>
+</ItemGroup>
+`;

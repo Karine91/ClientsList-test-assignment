@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Input } from "semantic-ui-react";
 import { setTextFilter } from "../actions/filters";
 
-class SearchInput extends React.Component {
+export class SearchInput extends React.Component {
   onChangeSearchInput = e => {
     const value = e.target.value;
     this.props.onChangeSearchInput(value);
